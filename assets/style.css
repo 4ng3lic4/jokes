@@ -1,0 +1,54 @@
+/* full borders are present only for planning/structuring purposes. */
+
+* {
+    background-color: rgb(16, 43, 68);
+    color: rgb(255, 255, 255);
+}
+
+body {
+    height: 100vh;
+    border: 2px solid red;
+}
+
+.header {
+    display: flex;
+}
+
+.main-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid white;
+    height: 90vh;
+}
+
+.jokes-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid white;
+    height: 90vh;
+}
+
+#searchBar {
+    width: 50%;
+    font-size: 18px;
+    padding: 11px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.hide-me {
+    display: none;
+}
+
+#placeholderHistory{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+
+}
