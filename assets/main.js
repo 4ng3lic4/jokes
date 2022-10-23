@@ -5,6 +5,12 @@ var mainDiv = document.querySelector("#main-content")
 var jokesDiv = document.querySelector("#jokes")
 var searchBar = document.querySelector("#searchBar");
 var header = document.querySelector("#header")
+//Joke paragraph//
+var jokePEl = document.querySelector("#jokeP");
+
+
+
+
 
 // utility/functionality variables 
 // empty array to house random numbers used to select cocktails from the API
@@ -52,13 +58,9 @@ showDrinks.addEventListener("click", searchCheck);
 function renderDrinks() {
   for (var i = 0; i < drinkResults.drinks.length; i++) {
     // create
-
     var drinkName = document.createElement("p");
     // modify
-
-    drinkName.textContent = drinkResults.drinks[i].strDrink
-
-
+    drinkName.textContent = drinkResults.drinks[i].strDrink //What is the sttrDrink?
     document.body.append(drinkName)
   }
 }
@@ -85,7 +87,8 @@ function getRandomNumbers() {
 // function to transition content from the search screen
 
 function jokesTransition() {
-  // test text
+    getJokes();
+      // test text
   console.log ("hello there!");
   // class switches to hide pre-search screen and start the timer
   mainDiv.setAttribute("class", "hide-me");
@@ -107,6 +110,7 @@ function jokesTransition() {
       
     }
   }, 1000);
+
 }
 
 
@@ -121,9 +125,7 @@ function afterTimeout(){
 function resultsTransition() {
   // test text
   console.log("Hello there! The results transition calls properly!")
-
 }
-// Second API (Project requires at least 2)
 
 var requestUrl = "https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list";
 
@@ -136,18 +138,29 @@ fetch(requestUrl)
     console.log(data);
   });
 
-var requestUrl =
-  "https://v2.jokeapi.dev/joke/Programming?blacklistFlags=nsfw,religious,political,racist,sexist,explicit&contains=Bar&amount=1";
+  
+//Function for the Jokes API
+ function getJokes() {
+  var requestJokesUrl = "https://v2.jokeapi.dev/joke/Programming?blacklistFlags=nsfw,religious,political,racist,sexist,explicit&contains=Bar&amount=1";
 
-fetch(requestUrl)
-  .then(function (response) {
-    return response.json();
-  })
-  .then(function (data) {
-    console.log("Bar Jokes");
-    console.log(data);
-  });
+  //Fetch the API
+  fetch(requestJokesUrl)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+  //Render the Jokes
+      //  renderJokes(data);
+    console.log(data.joke);
+        // create elements on HTML
+       var jokeName = document.createElement("p");
+        // modify
+        jokeName.textContent = data.joke; 
+      jokePEl.appendChild(jokeName); 
+      
+    });
 
+ }
 
 /* Uncomment this if it's determined to be necessary. 
 // Set and empty searched ingredients Array to global
